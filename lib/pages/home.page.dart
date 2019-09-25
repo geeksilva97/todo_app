@@ -12,19 +12,26 @@ class _HomePageState extends State<HomePage> {
 
   List<Todo> todoList = new List<Todo>();
 
-  void _mostraActionSheet(context){
-
-    showModalBottomSheet(
+  void _addTarefa(context){
+    showDialog(
       context: context,
-      builder: (BuildContext actionSheetContext) {
-        return NovaTodo(
-          onAdd: (String titulo, String descricao) {
-            print(titulo+' / '+descricao);
-          },
+      builder: (BuildContext c) {
+        return AlertDialog(
+          title: Text('NOVA TAREFA'),
+          content: Column(
+            children: <Widget>[
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Descrição da tarefa',
+                  border: OutlineInputBorder()
+                ),
+              )
+            ],
+          ),
         );
       }
     );
-}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +43,8 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.add),
             color: Colors.white,
             onPressed: (){
-              _mostraActionSheet(context);
+              _addTarefa(context);
+              // _mostraActionSheet(context);
               // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => NovaTodo()));
             },
           )
