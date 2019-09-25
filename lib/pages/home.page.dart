@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo.model.dart';
-import 'package:todo_app/pages/nova_todo.page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,23 +9,58 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  List<Todo> todoList = new List<Todo>();
+  List<Todo> _todoList = new List<Todo>();
+  final TextEditingController _controllerDescricao = TextEditingController();
 
   void _addTarefa(context){
     showDialog(
       context: context,
       builder: (BuildContext c) {
         return AlertDialog(
+          actions: <Widget>[
+            FlatButton(
+              child: Text('CANCELAR', style: TextStyle(color: Colors.grey),),
+              onPressed: (){
+                Navigator.of(context).pop();
+              },
+            ),
+
+            FlatButton(
+              child: Text('ADICIONAR'),
+              onPressed: (){
+                if(_controllerDescricao.text.isNotEmpty) {
+                  int id = DateTime.now().millisecond;
+                  setState(() {
+                    _todoList.add(Todo(
+                      id: id,
+                      descricao: _controllerDescricao.text
+                    ));
+                  });
+
+
+                  _controllerDescricao.clear();
+                  Navigator.of(context).pop();
+                }
+              },
+            )
+          ],
           title: Text('NOVA TAREFA'),
-          content: Column(
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Descrição da tarefa',
-                  border: OutlineInputBorder()
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                TextFormField(
+                  controller: _controllerDescricao,
+                  decoration: InputDecoration(
+                    labelText: 'Descrição',
+                    // border: OutlineInputBorder()
+                  ),
                 ),
-              )
-            ],
+
+                SizedBox(height: 10.0,),
+
+              ],
+            ),
           ),
         );
       }
@@ -51,12 +85,39 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: _todoList.length,
         itemBuilder: (context, index) {
+
+          Todo todo = _todoList[index];
+
           return Dismissible(
-            key: ValueKey(index),
-            child: ListTile(
-              title: Text('testando'),
+            key: ValueKey(todo.id),
+            onDismissed: (direction) {
+              setState(() {
+                _todoList.removeAt(index);
+              });
+            },
+            background: Card(
+              elevation: 4.0,
+              child: Container(
+                color: Colors.red,
+                padding: EdgeInsets.all(4.0),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Icon(Icons.delete, color: Colors.white)
+                ),
+              ),
+            ),
+            direction: DismissDirection.endToStart,
+            child: Card(
+              elevation: 4.0,
+              child: Container(
+                padding: EdgeInsets.all(5.0),
+                child: ListTile(
+                  title: Text(todo.descricao),
+                  trailing: Icon(Icons.swap_horizontal_circle),
+                ),
+              ),
             ),
           );
         },

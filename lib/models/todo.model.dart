@@ -1,4 +1,5 @@
 class Todo {
-  String titulo, descricao;
-  Todo({this.titulo, this.descricao});
+  int id;
+  String descricao;
+  Todo({this.id, this.descricao});
 }
