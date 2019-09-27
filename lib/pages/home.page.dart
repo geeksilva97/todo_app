@@ -11,6 +11,7 @@ class _HomePageState extends State<HomePage> {
 
   List<Todo> _todoList = new List<Todo>();
   final TextEditingController _controllerDescricao = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
 
   void _addTarefa(context){
     showDialog(
@@ -37,7 +38,6 @@ class _HomePageState extends State<HomePage> {
                     ));
                   });
 
-
                   _controllerDescricao.clear();
                   Navigator.of(context).pop();
                 }
@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 TextFormField(
+                  focusNode: _focusNode,
                   controller: _controllerDescricao,
                   decoration: InputDecoration(
                     labelText: 'Descrição',
@@ -78,8 +79,6 @@ class _HomePageState extends State<HomePage> {
             color: Colors.white,
             onPressed: (){
               _addTarefa(context);
-              // _mostraActionSheet(context);
-              // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => NovaTodo()));
             },
           )
         ],
