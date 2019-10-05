@@ -32,7 +32,7 @@ Nosso Flutter já funciona, se acessarmos diretamente pela pasta `/bin` já pode
 #### No Windows
 ----
 
-No menu iniciar vamos procurar pelo item "Edita variáveis de ambiente para esta conta". Procuraremos pelo `PATH` e adicionaremos mais uma entrada, que será direcionada para a pasta `bin` dentro dos arquivos que baixamos do Flutter.
+No menu iniciar vamos procurar pelo item "Editar variáveis de ambiente para esta conta". Procuraremos pelo `PATH` e adicionaremos mais uma entrada, que será direcionada para a pasta `bin` dentro dos arquivos que baixamos do Flutter.
 
 Por exemplo, suponhamos que os arquivos do Flutter encontram-se no caminho `C:\opt\flutter`. Em nosso `PATH` vamos adicionar a entrada `C:\opt\flutter\bin`.
 
