@@ -5,9 +5,11 @@ Nessa prática abordaremos criaremos nosso primeiro app em Flutter.
 A ideia aqui é fazer algo prático e do conhecimento da maioria, aproveitando para explanar alguns conceitos que serão úteis no desenvolvimento das suas aplicações.
 
 # Objetivo da prática
-Nosso app final deve ser algo parecidoo com 
+Nosso app final deve ser algo parecido com 
 
-![Tela Inicial](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+Tela inicial sem tarefas             |  Adicionando tarefa | Tela com tarefa
+:-------------------------:|:-------------------------:|:-------------------------:
+![Tela Inicial](https://raw.githubusercontent.com/geeksilva97/todo_app/master/repo_images/todo1.jpg)  |  ![Tela Inicial](https://raw.githubusercontent.com/geeksilva97/todo_app/master/repo_images/todo2.jpg)  | ![Tela Inicial](https://raw.githubusercontent.com/geeksilva97/todo_app/master/repo_images/todo3.jpg)
 
 
 
