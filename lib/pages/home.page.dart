@@ -83,8 +83,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: ListView.separated(
-        separatorBuilder: (context, index) => Divider(),
+      body: ListView.builder(
         itemCount: _todoList.length,
         itemBuilder: (context, index) {
 
